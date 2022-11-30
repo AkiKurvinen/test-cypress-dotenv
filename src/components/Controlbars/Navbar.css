@@ -1,0 +1,13 @@
+:root{
+    --toolbar-width: 40px;
+}
+.Navbar{
+    display: flex;
+    justify-content: flex-end;
+    width: calc(100% - 40px);
+    height: var(--toolbar-width);
+    background-color: rgb(71, 71, 71);
+    position: fixed;
+    left: var(--toolbar-width);
+    color: white;
+}
