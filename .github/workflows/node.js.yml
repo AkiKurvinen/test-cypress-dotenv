@@ -21,6 +21,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
+    - name: Write the cypress.env.json file 📝
+    # use quotes around the secret, as its value
+    # is simply inserted as a string into the command
+    run: |
+      echo '${{ secrets.CYPRESS_ENV_CI }}' > cypress.env.json
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v3
       with:
@@ -34,10 +39,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
+        uses: actions/checkout@v2
       # Install NPM dependencies, cache them correctly
       # and run all Cypress tests
-        run: |
-          echo '${{ secrets.test-env }}' > cypress.env.json
       - name: Cypress run
         uses: cypress-io/github-action@v4
         with:
